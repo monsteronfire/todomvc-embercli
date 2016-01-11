@@ -1,29 +1,4 @@
-<input type="text" id="new-todo" placeholder="What needs to be done?">
-
-<section id="main">
-  {{outlet}}
-
-  <input type="checkbox" id="toggle-all">
-</section>
-
-<footer id="footer">
-  <span id="todo-count">
-    <strong>2</strong> todos left
-  </span>
-
-  <ul id="filters">
-    <li>
-      <a href="all" class="selected">All</a>
-    </li>
-    <li>
-      <a href="active">Active</a>
-    </li>
-    <li>
-      <a href="completed">Completed</a>
-    </li>
-  </ul>
-
-  <button id="clear-completed">
-    Clear completed (1)
-  </button>
-</footer>
+{{todo-input action="createTodo"}}
+{{#todo-list todos=model}}
+    {{outlet}}
+{{/todo-list}}

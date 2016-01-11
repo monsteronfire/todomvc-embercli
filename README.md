@@ -1,7 +1,8 @@
 # Todomvc-embercli
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Following the following [todomvc tutorial](http://www.thetechcofounder.com/getting-started-with-ember-js-using-ember-cli/).
+
+The objective is to practice creating a rudimentary app in emberJS with the intention of hooking it up to Rails for persistent data.
 
 ## Prerequisites
 
@@ -51,3 +52,104 @@ Specify what it takes to deploy your app.
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
+# Todo MVC: Ember Edition
+
+##Generate Ember App
+Generate a new `Ember` app:
+```zsh
+ember new todomvc-embercli
+cd todomvc-embercli
+```
+Open `bower.js` file and change the follwing to version 2.0
+```json
+"ember": "2.0",
+"ember-data": "2.0",
+```
+
+In your terminal, in your app root directory, run
+```zsh
+bundle install
+```
+Choose the version of Ember that best suits your app.
+
+##Routes
+In `app/router.js', add route for home to point to `todos`
+```javascript
+import Ember from 'ember';  
+import config from './config/environment';
+
+var Router = Ember.Router.extend({  
+  location: config.locationType
+});
+
+Router.map(function() {  
+    this.route('todos', { path: '/' });
+});
+
+export default Router;  
+```
+
+Edit `app/templates/application.hbs` to add a header and a footer
+```hbs
+<section id="todoapp">  
+    <header id="header">
+        <h1>todos</h1>
+    </header>
+
+    {{outlet}}
+</section>
+
+<footer id="info">  
+    <p>Double-click to edit a todo</p>
+</footer> 
+```
+
+###Todo Route
+```zsh
+touch app/templates/todos.hbs
+touch app/routes/todos.js
+```
+........incomplete
+## Styling
+Copy the styles from [here](https://raw.githubusercontent.com/brownie3003/ember-cli-todo-mvc/master/app/styles/app.css) and paste them into the `app/styles/app.css` file.
+
+Update the HTMl structure in `app/templates/todos.hbs` to match:
+```hbs
+<input type="text" id="new-todo" placeholder="What needs to be done?" />
+
+<section id="main">  
+    <ul id="todo-list">
+        {{#each model as |todo|}}
+            <li class="completed">
+                <input type="checkbox" class="toggle">
+                <label>{{todo.title}}</label><button class="destroy"></button>
+            </li>
+        {{/each}}
+    </ul>
+
+    <input type="checkbox" id="toggle-all">
+</section>
+
+<footer id="footer">  
+    <span id="todo-count">
+        <strong>2</strong> todos left
+    </span>
+    <ul id="filters">
+        <li>
+            <a href="all" class="selected">All</a>
+        </li>
+        <li>
+            <a href="active">Active</a>
+        </li>
+        <li>
+            <a href="completed">Completed</a>
+        </li>
+    </ul>
+
+    <button id="clear-completed">
+        Clear completed (1)
+    </button>
+</footer> 
+```
+
+###Planning the routes
