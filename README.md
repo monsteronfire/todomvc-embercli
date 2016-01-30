@@ -153,3 +153,6 @@ Update the HTMl structure in `app/templates/todos.hbs` to match:
 ```
 
 ###Planning the routes
+
+##Nested Routes (complete and incomplete)
+* install addon [from here](https://github.com/ember-data/ember-data-filter)

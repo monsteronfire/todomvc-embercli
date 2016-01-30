@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       return !todo.get('complete');
     });
   },
-  renderTemplate(controller, mode){
+  renderTemplate(controller, model){
     this.render('todos.index', {
       model: model
     });
