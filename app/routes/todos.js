@@ -6,16 +6,16 @@ export default Ember.Route.extend({
     },
     actions: {
         createTodo(newTitle) {
-           this.store.createRecord('todo', {
+            this.store.createRecord('todo', {
                title: newTitle,
                complete: false
-           }).save();
+            }).save();
         },
         updateTodo(todo) {
-          todo.save();
+            todo.save();
         },
         deleteTodo(todo) {
-          todo.destroyRecord();
+            todo.destroyRecord();
         }
     }
 });
